@@ -42,14 +42,16 @@ public class StarWarsGame {
 					System.out.println("\nINVALID OPTION. TRY AGAIN.\n");
 					break;
 				}else {
-					playerHeroes[i] = CharacterFactory.newCharacter(playerTeam, option);
-					cpuHeroes[i] = CharacterFactory.newCharacter(cpuTeam, option);
+					playerHeroes[i] = StarWarsCharacter.newCharacter(playerTeam, option);
+					cpuHeroes[i] = StarWarsCharacter.newCharacter(cpuTeam, option);
 				}
 			}
 			
 		} while (playerTeam<0 || playerTeam>4);
 		
 		System.out.println("TEAMS COMPLETED:\n\n"+Arrays.toString(playerHeroes)+"\n"+Arrays.toString(cpuHeroes));
+		
+		sc.close();
 
 	}
 	
