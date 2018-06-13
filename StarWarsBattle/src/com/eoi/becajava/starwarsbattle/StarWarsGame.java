@@ -4,33 +4,52 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class StarWarsGame {
+	
+	static int playerTeam;
+	static int cpuTeam;
+	static StarWarsCharacter[] playerHeroes = new StarWarsCharacter[3];
+	static StarWarsCharacter[] cpuHeroes = new StarWarsCharacter[3];
 
 	public static void main(String[] args) {
-		int playerTeam;
-		int cpuTeam;
-		int option;
-		StarWarsCharacter[] playerHeroes = new StarWarsCharacter[3];
-		StarWarsCharacter[] cpuHeroes = new StarWarsCharacter[3];
+		
+		
+		playerTeam=selectTeam();
+		
+		pickHeroes();
+		
+		
+		System.out.println("TEAMS COMPLETED:\n\n"+Arrays.toString(playerHeroes)+"\n"+Arrays.toString(cpuHeroes));
+		
+
+	}
+	
+	static public int selectTeam() {
+		int team;
 		Scanner sc = new Scanner(System.in);
-		
-		
 		
 		do {
 			
 			System.out.println("\tSELECT TEAM\n\t-----------\n\n0 - EMPIRE\t1 - REBELS\n----------\t----------\n");
-			playerTeam = sc.nextInt();
+			team = sc.nextInt();
 			
-			if(playerTeam<0 || playerTeam>1) {
+			if(team<0 || team>1) {
 				System.out.println("\nINVALID OPTION. TRY AGAIN.\n");
 			}
 			
-		} while (playerTeam<0 || playerTeam>1);
+		} while (team<0 || team>1);
 		
-		if (playerTeam==0) {
+		if (team==0) {
 			cpuTeam=1;
 		} else {
 			cpuTeam=0;
 		}
+		sc.close();
+		return team;
+	}
+	
+	static public void pickHeroes() {
+		Scanner sc = new Scanner(System.in);
+		int option;
 		
 		do {
 			
@@ -49,10 +68,8 @@ public class StarWarsGame {
 			
 		} while (playerTeam<0 || playerTeam>4);
 		
-		System.out.println("TEAMS COMPLETED:\n\n"+Arrays.toString(playerHeroes)+"\n"+Arrays.toString(cpuHeroes));
-		
 		sc.close();
-
+		
 	}
 	
 	static public void printPickMenu(int choice) {

@@ -92,4 +92,70 @@ public abstract class StarWarsCharacter {
 		
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getTeam() {
+		return team;
+	}
+
+	public void setTeam(int team) {
+		this.team = team;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getLife() {
+		return life;
+	}
+
+	public void setLife(int life) {
+		this.life = life;
+	}
+
+	public int getDoge() {
+		return doge;
+	}
+
+	public void setDoge(int doge) {
+		this.doge = doge;
+	}
+
+	public int getLucky() {
+		return lucky;
+	}
+
+	public void setLucky(int lucky) {
+		this.lucky = lucky;
+	}
+
+	public int getShield() {
+		return shield;
+	}
+
+	public void setShield(int shield) {
+		this.shield = shield;
+	}
+
+	public int getCriticalImpact() {
+		return criticalImpact;
+	}
+
+	public void setCriticalImpact(int criticalImpact) {
+		this.criticalImpact = criticalImpact;
+	}
+	
+	
+
 }
