@@ -1,6 +1,5 @@
 package com.eoi.becajava.starwarsbattle;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class StarWarsGame {
@@ -9,23 +8,30 @@ public class StarWarsGame {
 	static int cpuTeam;
 	static StarWarsCharacter[] playerHeroes = new StarWarsCharacter[3];
 	static StarWarsCharacter[] cpuHeroes = new StarWarsCharacter[3];
+	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		
-		
+		int winnerTeam;
 		playerTeam=selectTeam();
 		
 		pickHeroes();
 		
+		printTeams();
 		
-		System.out.println("TEAMS COMPLETED:\n\n"+Arrays.toString(playerHeroes)+"\n"+Arrays.toString(cpuHeroes));
+		winnerTeam = Battle.getWinner(playerHeroes, cpuHeroes);
 		
+		if (winnerTeam==0) {
+			System.out.println("YOU WIN!!!");
+		}else {
+			System.out.println("CPU WINS...");
+		}
+		
+		sc.close();
 
 	}
 	
 	static public int selectTeam() {
 		int team;
-		Scanner sc = new Scanner(System.in);
 		
 		do {
 			
@@ -43,12 +49,10 @@ public class StarWarsGame {
 		} else {
 			cpuTeam=0;
 		}
-		sc.close();
 		return team;
 	}
 	
 	static public void pickHeroes() {
-		Scanner sc = new Scanner(System.in);
 		int option;
 		
 		do {
@@ -63,12 +67,14 @@ public class StarWarsGame {
 				}else {
 					playerHeroes[i] = StarWarsCharacter.newCharacter(playerTeam, option);
 					cpuHeroes[i] = StarWarsCharacter.newCharacter(cpuTeam, option);
+					
+					System.out.println("\nYOUR PICK: "+playerHeroes[i].getName());
+					System.out.println("CPU PICKS: "+cpuHeroes[i].getName()+"\n");
 				}
 			}
 			
 		} while (playerTeam<0 || playerTeam>4);
 		
-		sc.close();
 		
 	}
 	
@@ -93,6 +99,15 @@ public class StarWarsGame {
 			System.out.println("-     [3] - Chewbacca       -");
 			System.out.println("-     [4] - Han Solo        -");
 			System.out.println("+---------------------------+");
+		}
+	}
+	
+	static public void printTeams() {
+		for (StarWarsCharacter heroe : cpuHeroes) {
+			System.out.println(heroe.getName());
+		}
+		for (StarWarsCharacter heroe : playerHeroes) {
+			System.out.println(heroe.getName());
 		}
 	}
 
