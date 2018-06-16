@@ -2,26 +2,27 @@ package com.eoi.becajava.starwarsbattle;
 
 public abstract class StarWarsCharacter {
 	
-	String name;
+	private String name;
 
-	int strength;
+	private int strength;
 
-	int life;
+	private int life;
 
-	int doge;
+	private int doge;
 
-	int lucky;
+	private int luck;
 	
-	int shield;
+	private int shield;
 
-	int criticalImpact;
+	private int criticalImpact;
 	
-	public StarWarsCharacter(String name, int strength, int life, int doge, int lucky, int shield, int criticalImpact) {
+	public StarWarsCharacter(String name, int strength, int life, int doge, int luck, int shield, int criticalImpact) {
 		
+		this.name=name;
 		this.strength=strength;
 		this.life=life;
 		this.doge=doge;
-		this.lucky=lucky;
+		this.luck=luck;
 		this.shield=shield;
 		this.criticalImpact=criticalImpact;
 		
@@ -113,12 +114,12 @@ public abstract class StarWarsCharacter {
 		this.doge = doge;
 	}
 
-	public int getLucky() {
-		return lucky;
+	public int getLuck() {
+		return luck;
 	}
 
-	public void setLucky(int lucky) {
-		this.lucky = lucky;
+	public void setLuck(int lucky) {
+		this.luck = lucky;
 	}
 
 	public int getShield() {
