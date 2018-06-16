@@ -2,6 +2,7 @@ package com.eoi.becajava.starwarsbattle;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Battle {
 	
@@ -12,6 +13,7 @@ public class Battle {
 	static private int turn;
 	static private int cTeam1=0;
 	static private int cTeam2=0;
+	static private Scanner sc = new Scanner(System.in);
 	
 	public static int getWinner(List<StarWarsCharacter> team1, List<StarWarsCharacter> team2) {
 		
@@ -19,7 +21,7 @@ public class Battle {
 		
 		fight(team1, team2);
 		
-		return cTeam1>cTeam2?  1 :  0;
+		return cTeam1>cTeam2?  0 :  1;
 	}
 	
 	public static void getFirstTurn() {
@@ -57,21 +59,19 @@ public class Battle {
 					
 					if(turn==0) {
 						
-						System.out.printf("%s TRIES TO ATTACK ", heroe1.getName().toUpperCase());
 						tryAttack(heroe1,heroe2);
 						turn=1;
 						
 					} else {
 						
-						System.out.printf("%s TRIES TO ATTACK ", heroe2.getName().toUpperCase());
 						tryAttack(heroe2,heroe1);
 						turn=0;
 						
 					}
 					if (heroe1.getLife()<=0) {
-						cTeam1++;
-					}else if (heroe2.getLife()<=0) {
 						cTeam2++;
+					}else if (heroe2.getLife()<=0) {
+						cTeam1++;
 					}
 				}
 			}
@@ -79,6 +79,8 @@ public class Battle {
 	}
 	
 	public static void tryAttack(StarWarsCharacter heroe1, StarWarsCharacter heroe2) {
+		
+		System.out.printf("%s TRIES TO ATTACK ", heroe1.getName().toUpperCase());
 		
 		if(heroe1.getLuck()>0 && destiny.nextDouble()*prob <= heroe1.getLuck()) {
 			
@@ -147,23 +149,28 @@ public class Battle {
 		
 		switch(action) {
 		case 0:
-			System.out.printf("AND HITS %s TWICE!\n%s HP IN DAMAGE!\n", heroe.getName().toUpperCase(), damage);
+			System.out.printf("AND HITS %s TWICE!!!\n||", heroe.getName().toUpperCase());
 			break;
 		case 1:
-			System.out.printf("AND HITS A CRITICAL IMPACT!\n", heroe.getName().toUpperCase());
+			System.out.printf("AND HITS A CRITICAL IMPACT!!!\n", heroe.getName().toUpperCase());
 			break;
 		case 2:
-			System.out.printf("AND HITS %s!\n%s HP IN DAMAGE!\n", heroe.getName().toUpperCase(), damage);
+			System.out.printf("AND HITS %s\n||", heroe.getName().toUpperCase());
 			break;
 		case 4:
-			System.out.printf("HE CAUSES %s HP IN DAMAGE!\n", damage);
+			System.out.printf("||HE CAUSES");
 			break;
 		}
+		
+		System.out.printf(" %s HP IN DAMAGE||\n", damage);
+		
 		if(heroe.getLife()<=0) {
-			System.out.printf("%s HAS DIED!\n\n", heroe.getName().toUpperCase());
+			System.out.printf("|||%s HAS DIED!|||\n\n", heroe.getName().toUpperCase());
 		}else {
-			System.out.printf("%s HAS NOW %s HP.\n\n", heroe.getName().toUpperCase(), heroe.getLife());
+			System.out.printf("%s HAS NOW [%s HP].\n\n", heroe.getName().toUpperCase(), heroe.getLife());
 		}
+		System.out.println("Press ENTER to continue...");
+		sc.nextLine();
 	}
 	
 	static void printDoge(int action, StarWarsCharacter heroe) {

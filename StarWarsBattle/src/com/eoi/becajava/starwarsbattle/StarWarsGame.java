@@ -38,9 +38,9 @@ public class StarWarsGame {
 		winnerTeam = Battle.getWinner(playerHeroes, cpuHeroes);
 		
 		if (winnerTeam==0) {
-			System.out.println("YOU WIN!!!");
+			System.out.println("\n\t\t+--------------+\n\t\t|  YOU WIN!!!  |\n\t\t+--------------+");
 		}else {
-			System.out.println("CPU WINS...");
+			System.out.println("\n\t\t+---------------+\n\t\t|  CPU WINS...  |\n\t\t+---------------+");
 		}
 		
 		sc.close();
@@ -75,7 +75,6 @@ public class StarWarsGame {
 			
 			if(option<0 || option>4) {
 				System.out.println("\nINVALID OPTION. TRY AGAIN.\n");
-				break;
 			}else {
 				team1.add(StarWarsCharacter.newCharacter(playerTeam, option));
 				team2.add(StarWarsCharacter.newCharacter(cpuTeam, option));
